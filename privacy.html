@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fafa 隐私说明</title>
+<style>
+  :root {
+    --ground: #F3F0EB;
+    --surface: #FFFFFF;
+    --ink: #1A1512;
+    --ink-soft: #4E443D;
+    --muted: #857870;
+    --line: #E7DFD8;
+    --brand: #B08268;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 20px 72px;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.8 -apple-system, BlinkMacSystemFont, "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; }
+  header { margin-bottom: 36px; }
+  h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: .3px; }
+  .intro { margin: 0; color: var(--ink-soft); font-size: 17px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 4px 22px;
+  }
+  section { padding: 20px 0; border-top: 1px solid var(--line); }
+  section:first-child { border-top: 0; }
+  h2 { margin: 0 0 8px; font-size: 16px; letter-spacing: .2px; }
+  p { margin: 0; color: var(--ink-soft); }
+  p + p { margin-top: 10px; }
+  a { color: var(--brand); }
+  footer {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  footer p { margin: 0; color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>fafa 隐私说明</h1>
+    <p class="intro">fafa 不联网，你的账只在你的手机里。</p>
+  </header>
+
+  <div class="card">
+    <section>
+      <h2>不收集个人信息</h2>
+      <p>fafa 没有服务器，也没有账号体系，不会收集姓名、手机号、位置、通讯录等个人信息，更没有统计和广告。</p>
+    </section>
+
+    <section>
+      <h2>数据只在你的手机里</h2>
+      <p>账本、记录、分类和预算都保存在本机，其他 App 无法读取。卸载 fafa 会一并删除这些数据，无法恢复。</p>
+    </section>
+
+    <section>
+      <h2>数据由你掌控</h2>
+      <p>fafa 不会自动上传你的数据。需要时，你可以随时导出 Markdown 报表或 JSON 备份，把数据带走。</p>
+    </section>
+
+    <section>
+      <h2>不共享给第三方</h2>
+      <p>因为不收集任何数据，也就没有任何数据被共享、出售或转移给第三方。fafa 不含第三方统计、广告或追踪组件。</p>
+    </section>
+
+    <section>
+      <h2>儿童隐私</h2>
+      <p>fafa 不收集任何用户信息，也不针对儿童收集数据。</p>
+    </section>
+
+    <section>
+      <h2>关于云端同步</h2>
+      <p>如果未来加入云端同步，会由你主动开启，并在这里更新说明。</p>
+    </section>
+
+    <section>
+      <h2>联系方式</h2>
+      <p>对隐私有任何疑问，可以邮件联系：<a href="mailto:usefafa@proton.me">usefafa@proton.me</a></p>
+    </section>
+  </div>
+
+  <footer>
+    <p>生效日期：2026 年 9 月 11 日</p>
+    <p>本说明如有更新，会直接在本页修改。</p>
+  </footer>
+</main>
+</body>
+</html>

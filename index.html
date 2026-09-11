@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fafa</title>
+<style>
+  :root {
+    --ground: #F3F0EB;
+    --ink: #1A1512;
+    --ink-soft: #4E443D;
+    --muted: #857870;
+    --brand: #B08268;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 32px 20px;
+    display: grid;
+    place-items: center;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.8 -apple-system, BlinkMacSystemFont, "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 420px; text-align: center; }
+  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: .5px; }
+  .tag { margin: 0 0 28px; color: var(--ink-soft); font-size: 17px; }
+  .lede { margin: 0 0 32px; color: var(--muted); font-size: 15px; }
+  nav { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  a { color: var(--brand); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  a:hover { color: var(--ink); }
+  footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>fafa</h1>
+  <p class="tag">打一行字，就记完一笔。</p>
+  <p class="lede">
+    一个尽可能简单的记账 App。不联网，没有账号，
+    你的账只在自己的手机里。
+  </p>
+  <nav>
+    <a href="privacy.html">隐私说明</a>
+    <a href="mailto:usefafa@proton.me">联系作者</a>
+  </nav>
+  <footer>iOS · 即将上架</footer>
+</main>
+</body>
+</html>
