@@ -37,20 +37,26 @@
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
+  /* 整页要在一屏里放得下（宽屏时不用滚就能看到页脚那句「该花花，就发发。」）：
+     body 是一列 flex、撑满 100vh，中间那块 flex:1，页脚自然贴底；
+     真正吃高度的是右边那张手机截图，所以它的高度跟着视口算，见 .phone。 */
   body {
     margin: 0;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
     background: var(--ground);
     color: var(--ink-soft);
     font: 16px/1.8 -apple-system, BlinkMacSystemFont, "PingFang SC",
           "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; width: 100%; }
+  .wrap--main { flex: 1; display: flex; flex-direction: column; }
 
   /* ---------- 顶栏 ---------- */
   .topbar {
     display: flex; align-items: flex-start; justify-content: space-between;
-    gap: 16px; padding: 26px 0 0;
+    gap: 16px; padding: clamp(16px, 2.6vh, 26px) 0 0;
   }
   /* 字标和它下面那句标语是一块，所以顶栏按 flex-start 对齐、
      右边的链接用 padding-top 顶回字标那一行的高度 */
@@ -62,11 +68,12 @@
 
   /* ---------- 主区 ---------- */
   .hero {
+    flex: 1;
     display: grid;
     grid-template-columns: 1fr minmax(300px, 420px);
     gap: 48px;
     align-items: center;
-    padding: 56px 0 72px;
+    padding: clamp(16px, 3.5vh, 48px) 0;
   }
 
   .eyebrow {
@@ -115,23 +122,28 @@
   .shot {
     background: var(--panel);
     border-radius: 28px;
-    padding: 28px;
+    padding: clamp(14px, 2.4vh, 28px);
     display: flex; justify-content: center;
   }
-  /* 外框高度跟着图走，所以任何比例的截图都能塞进来，不用裁 */
+  /* ⚠️ 这里是**按高度**定尺寸、宽度由图片比例自己算出来的，不是反过来。
+     整页要塞进一屏，而这张截图是最高的那一块，所以它必须跟着视口缩：
+     减去的 340px ≈ 顶栏 + 页脚 + 上下留白 + .shot 自己的内边距。
+     上限 650px 是原尺寸（300 宽 × 828:1792 的比例），高屏幕上不会被拉大。
+     换一张不同比例的截图不用改这里，宽度会自己跟着变。 */
   .phone {
-    width: 100%; max-width: 300px;
+    height: clamp(300px, calc(100vh - 340px), 650px);
+    width: auto; max-width: 100%;
     border-radius: 30px; overflow: hidden;
     background: #fff;
     box-shadow: 0 18px 40px rgba(36, 28, 24, .13);
   }
-  .phone img { display: block; width: 100%; height: auto; }
+  .phone img { display: block; height: 100%; width: auto; }
 
   /* ---------- 页脚 ---------- */
   footer {
     border-top: 1px solid var(--line);
     display: flex; align-items: center; justify-content: space-between;
-    gap: 16px; padding: 24px 0 36px;
+    gap: 16px; padding: clamp(14px, 2.2vh, 24px) 0 clamp(16px, 3vh, 36px);
     color: var(--muted); font-size: 13px;
   }
   footer img { width: 62px; height: auto; display: block; opacity: .75; }
@@ -145,8 +157,11 @@
       text-align: center;
     }
     .feats { justify-content: center; }
-    .shot { order: 2; }
+    .shot { order: 2; padding: 20px; }
     h1 { margin-bottom: 20px; }
+    /* 窄屏本来就是要往下滚的，截图不跟视口缩，退回按宽度定尺寸 */
+    .phone { height: auto; width: 100%; max-width: 300px; }
+    .phone img { width: 100%; height: auto; }
   }
   @media (max-width: 420px) {
     /* 窄屏顶栏一行要塞下「字标+标语」和两个链接，标语跟着缩一档 */
@@ -160,7 +175,7 @@
 </head>
 <body>
 
-<div class="wrap">
+<div class="wrap wrap--main">
   <header class="topbar">
     <div class="brand">
       <img src="wordmark.png" alt="fafa" width="383" height="197">
