@@ -26,56 +26,197 @@
 <link rel="icon" href="https://mlnxsg.github.io/fafa-site/og-image.png">
 <style>
   :root {
-    --ground: #F3F0EB;
-    --ink: #1A1512;
-    --ink-soft: #4E443D;
-    --muted: #857870;
-    --brand: #B08268;
+    --ground: #F7F4EF;        /* 页底，比 App 的 #F3F0EB 略浅一点，衬得出右边那块面板 */
+    --panel: #F1ECE5;         /* 手机后面那块浅面板 */
+    --ink: #241C18;           /* 大标题 */
+    --ink-soft: #4E443D;      /* 正文 */
+    --muted: #8B7E75;         /* 次要文字、图标 */
+    --brand: #B08268;         /* 陶土棕，跟 App 同一支 */
+    --brand-deep: #9A6E56;    /* 按钮/强调，比 brand 深一档 */
+    --line: #E3DBD2;
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    min-height: 100vh;
-    padding: 32px 20px;
-    display: grid;
-    place-items: center;
     background: var(--ground);
-    color: var(--ink);
+    color: var(--ink-soft);
     font: 16px/1.8 -apple-system, BlinkMacSystemFont, "PingFang SC",
           "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 420px; text-align: center; }
-  /* 字标是图不是字（跟 App 主页左上角同一张 wordmark.png）。
-     标签上写死 width/height，浏览器一开始就留好位置，图加载完不会把下面的字顶一下。 */
-  h1 { margin: 0 0 10px; line-height: 0; }
-  h1 img { width: 148px; height: auto; max-width: 100%; }
-  .tag { margin: 0 0 24px; color: var(--ink-soft); font-size: 17px; }
-  .lede { margin: 0 0 32px; color: var(--muted); font-size: 15px; }
-  nav { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-  a { color: var(--brand); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
-  a:hover { color: var(--ink); }
-  footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- 顶栏 ---------- */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 26px 0 0;
+  }
+  .topbar img { width: 92px; height: auto; display: block; }
+  .topbar nav { display: flex; gap: 26px; }
+  .topbar a { color: var(--muted); font-size: 14px; text-decoration: none; }
+  .topbar a:hover { color: var(--brand-deep); }
+
+  /* ---------- 主区 ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 420px);
+    gap: 48px;
+    align-items: center;
+    padding: 56px 0 72px;
+  }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin: 0 0 18px; color: var(--brand); font-size: 14px; letter-spacing: 1px;
+  }
+  .eyebrow::before {
+    content: ""; width: 26px; height: 1.5px; background: var(--brand); flex: none;
+  }
+
+  h1 {
+    margin: 0 0 26px;
+    /* ⚠️ 中文重量级字体没法上网（动辄 3~5MB），只能用系统字体：
+       iPhone / Mac 上是 PingFang SC，跟设计稿接近；Windows 上会细一些。 */
+    font-size: clamp(38px, 7.2vw, 66px);
+    line-height: 1.18;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+  h1 .accent { color: var(--brand); display: block; }
+
+  .lede { margin: 0 0 32px; font-size: 16px; color: var(--ink-soft); }
+
+  /* ⚠️ 这是一颗**不可点**的状态胶囊，不是按钮：现在没有任何地方可以跳。
+     上架当天换成 <a class="cta" href="https://apps.apple.com/app/id6811014619">在 App Store 下载</a>
+     并把 cursor/hover 打开。审核期间不能提前换——产品页没公开，点了是 404。 */
+  .cta {
+    display: inline-block; cursor: default; user-select: none;
+    padding: 14px 30px; border-radius: 999px;
+    background: var(--brand-deep); color: #fff;
+    font-size: 15px; letter-spacing: .3px;
+    box-shadow: 0 6px 18px rgba(154, 110, 86, .22);
+  }
+
+  .feats {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+    margin: 36px 0 0; padding: 0; list-style: none;
+    color: var(--muted); font-size: 14px;
+  }
+  .feats li { display: flex; align-items: center; gap: 8px; }
+  .feats svg { width: 18px; height: 18px; flex: none; }
+  .feats .dot { color: var(--line); }
+
+  /* ---------- 右边的手机 ---------- */
+  .shot {
+    background: var(--panel);
+    border-radius: 28px;
+    padding: 28px;
+    display: flex; justify-content: center;
+  }
+  /* 外框高度跟着图走，所以任何比例的截图都能塞进来，不用裁 */
+  .phone {
+    width: 100%; max-width: 300px;
+    border-radius: 30px; overflow: hidden;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(36, 28, 24, .13);
+  }
+  .phone img { display: block; width: 100%; height: auto; }
+
+  /* ---------- 页脚 ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 24px 0 36px;
+    color: var(--muted); font-size: 13px;
+  }
+  footer img { width: 62px; height: auto; display: block; opacity: .75; }
+
+  /* ---------- 窄屏：一列 ---------- */
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 0 56px;
+      text-align: center;
+    }
+    .eyebrow, .feats { justify-content: center; }
+    .shot { order: 2; }
+    h1 { margin-bottom: 20px; }
+  }
+  @media (max-width: 420px) {
+    .topbar nav { gap: 18px; }
+    .shot { padding: 18px; border-radius: 22px; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1><img src="wordmark.png" alt="fafa" width="383" height="197"></h1>
-  <p class="tag">一句话，就记好一笔。</p>
-  <p class="lede">
-    输入「奶茶15」，金额和分类自动填好。<br>
-    轻松记，零压力，该花花就发发。<br>
-    无需注册，离线可用，账目保存在本机。
-  </p>
-  <nav>
-    <a href="privacy.html">隐私说明</a>
-    <a href="mailto:usefafa@proton.me">联系作者</a>
-  </nav>
-  <!-- ⚠️ 这一行带时效，**上架当天必须改**：用户从 App Store 产品页的「App 支持」
-       点进来，看到"即将登陆"会以为走错了地方。上架后换成
-       <a href="https://apps.apple.com/app/id6811014619">在 App Store 下载</a>。
-       ⚠️ 审核期间不能提前换成那个链接——产品页还没公开，审核员点了是 404。 -->
-  <footer>即将登陆 App Store</footer>
-</main>
+
+<div class="wrap">
+  <header class="topbar">
+    <img src="wordmark.png" alt="fafa" width="383" height="197">
+    <nav>
+      <a href="privacy.html">隐私说明</a>
+      <a href="mailto:usefafa@proton.me">联系作者</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div>
+      <p class="eyebrow">一句话记账</p>
+      <h1>一句话，<span class="accent">就记好一笔。</span></h1>
+      <p class="lede">
+        输入「奶茶15」，金额和分类自动填好。<br>
+        轻松记，零压力，该花花就发发。
+      </p>
+      <span class="cta">即将登陆 App Store</span>
+
+      <ul class="feats">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/>
+          </svg>
+          无需注册
+        </li>
+        <li class="dot" aria-hidden="true">·</li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 8.5a16 16 0 0 1 6-3.6"/><path d="M13.5 5.3A16 16 0 0 1 22 8.5"/>
+            <path d="M5.5 12.4a11 11 0 0 1 3-1.8"/><path d="M15.5 10.9a11 11 0 0 1 3 1.5"/>
+            <path d="M9 16a6 6 0 0 1 4.5-1.2"/><circle cx="12" cy="19.5" r="1"/>
+            <path d="M3 3l18 18"/>
+          </svg>
+          离线可用
+        </li>
+        <li class="dot" aria-hidden="true">·</li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/>
+          </svg>
+          本机保存
+        </li>
+      </ul>
+    </div>
+
+    <div class="shot">
+      <div class="phone">
+        <!-- 真机截图，不是 CSS 画的假界面：以后 App 改了版式换这张图就行 -->
+        <img src="app-home.png" alt="fafa 的记账主页：输入「奶茶15」，自动归类到餐饮">
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="wrap">
+  <footer>
+    <img src="wordmark.png" alt="fafa" width="383" height="197">
+    <span>该花花，就发发。</span>
+  </footer>
+</div>
+
 </body>
 </html>
