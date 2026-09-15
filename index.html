@@ -137,12 +137,8 @@
     width: auto; max-width: 100%;
     border-radius: 30px; overflow: hidden;
     background: #fff;
-    /* 三层叠加的软阴影。单层 40px 模糊配 .13 透明度，边缘会看出一道生硬的界线；
-       拆成「贴边一层 + 中距一层 + 大范围一层」，每层都很淡，过渡才散得开。 */
-    box-shadow:
-      0 1px 2px rgba(36, 28, 24, .03),
-      0 8px 20px rgba(36, 28, 24, .05),
-      0 30px 70px rgba(36, 28, 24, .09);
+    /* 一层就够。软不软看的是模糊半径够不够大、透明度够不够低，不是层数 */
+    box-shadow: 0 14px 44px rgba(36, 28, 24, .10);
   }
   .phone img { display: block; height: 100%; width: auto; }
 
