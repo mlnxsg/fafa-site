@@ -49,11 +49,14 @@
 
   /* ---------- 顶栏 ---------- */
   .topbar {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: flex-start; justify-content: space-between;
     gap: 16px; padding: 26px 0 0;
   }
+  /* 字标和它下面那句标语是一块，所以顶栏按 flex-start 对齐、
+     右边的链接用 padding-top 顶回字标那一行的高度 */
+  .brand { display: flex; flex-direction: column; gap: 6px; }
   .topbar img { width: 92px; height: auto; display: block; }
-  .topbar nav { display: flex; gap: 26px; }
+  .topbar nav { display: flex; gap: 26px; padding-top: 9px; }
   .topbar a { color: var(--muted); font-size: 14px; text-decoration: none; }
   .topbar a:hover { color: var(--brand-deep); }
 
@@ -67,11 +70,11 @@
   }
 
   .eyebrow {
-    display: flex; align-items: center; gap: 12px;
-    margin: 0 0 18px; color: var(--brand); font-size: 14px; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 10px;
+    margin: 0; color: var(--brand); font-size: 14px; letter-spacing: 1px;
   }
   .eyebrow::before {
-    content: ""; width: 26px; height: 1.5px; background: var(--brand); flex: none;
+    content: ""; width: 22px; height: 1.5px; background: var(--brand); flex: none;
   }
 
   h1 {
@@ -141,12 +144,16 @@
       padding: 40px 0 56px;
       text-align: center;
     }
-    .eyebrow, .feats { justify-content: center; }
+    .feats { justify-content: center; }
     .shot { order: 2; }
     h1 { margin-bottom: 20px; }
   }
   @media (max-width: 420px) {
-    .topbar nav { gap: 18px; }
+    /* 窄屏顶栏一行要塞下「字标+标语」和两个链接，标语跟着缩一档 */
+    .topbar nav { gap: 16px; }
+    .topbar nav a { font-size: 13px; }
+    .eyebrow { font-size: 13px; gap: 8px; letter-spacing: .5px; }
+    .eyebrow::before { width: 16px; }
     .shot { padding: 18px; border-radius: 22px; }
   }
 </style>
@@ -155,7 +162,10 @@
 
 <div class="wrap">
   <header class="topbar">
-    <img src="wordmark.png" alt="fafa" width="383" height="197">
+    <div class="brand">
+      <img src="wordmark.png" alt="fafa" width="383" height="197">
+      <p class="eyebrow">一句话记账</p>
+    </div>
     <nav>
       <a href="privacy.html">隐私说明</a>
       <a href="mailto:usefafa@proton.me">联系作者</a>
@@ -164,7 +174,6 @@
 
   <main class="hero">
     <div>
-      <p class="eyebrow">一句话记账</p>
       <h1>一句话，<span class="accent">就记好一笔。</span></h1>
       <p class="lede">
         输入「奶茶15」，金额和分类自动填好。<br>
