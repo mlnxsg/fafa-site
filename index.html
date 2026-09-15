@@ -72,7 +72,11 @@
   .hero {
     flex: 1;
     display: grid;
-    grid-template-columns: 1fr minmax(300px, 420px);
+    /* ⚠️ 右列用 auto，不要写死宽度（原来是 minmax(300px, 420px)）：
+       手机的宽度是由高度和图片比例算出来的，列宽写死就会比手机宽出一大截，
+       面板左右各空出一条没有内容的色带，看着就是一块莫名其妙的颜色。
+       auto 让这一列跟着面板的内容宽走，面板自然贴着手机。 */
+    grid-template-columns: 1fr auto;
     gap: 48px;
     align-items: center;
     padding: clamp(16px, 3.5vh, 48px) 0;
@@ -126,6 +130,7 @@
     border-radius: 28px;
     padding: clamp(14px, 2.4vh, 28px);
     display: flex; justify-content: center;
+    justify-self: center;  /* 窄屏收成一列时居中 */
   }
   /* ⚠️ 这里是**按高度**定尺寸、宽度由图片比例自己算出来的，不是反过来。
      整页要塞进一屏，而这张截图是最高的那一块，所以它必须跟着视口缩：
