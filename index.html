@@ -32,7 +32,8 @@
     --ink-soft: #4E443D;      /* 正文 */
     --muted: #8B7E75;         /* 次要文字、图标 */
     --brand: #B08268;         /* 陶土棕，跟 App 同一支 */
-    --brand-deep: #9A6E56;    /* 按钮/强调，比 brand 深一档 */
+    --brand-deep: #9A6E56;    /* 比 brand 深一档，现在没人用，留着备用 */
+    --sage: #8A9C87;          /* 鼠尾草绿，从 App 图标里取的那一支（棕的那半是 #B0775B） */
     --line: #E3DBD2;
   }
   * { box-sizing: border-box; }
@@ -104,9 +105,9 @@
   .cta {
     display: inline-block; cursor: default; user-select: none;
     padding: 14px 30px; border-radius: 999px;
-    background: var(--brand-deep); color: #fff;
+    background: var(--sage); color: #fff;
     font-size: 15px; letter-spacing: .3px;
-    box-shadow: 0 6px 18px rgba(154, 110, 86, .22);
+    box-shadow: 0 6px 18px rgba(138, 156, 135, .35);
   }
 
   .feats {
@@ -142,11 +143,16 @@
   /* ---------- 页脚 ---------- */
   footer {
     border-top: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: flex-end;
     gap: 16px; padding: clamp(14px, 2.2vh, 24px) 0 clamp(16px, 3vh, 36px);
     color: var(--muted); font-size: 13px;
   }
-  footer img { width: 62px; height: auto; display: block; opacity: .75; }
+  .sign { display: flex; align-items: center; gap: 10px; }
+  /* 双 f 的 App 图标。图本身是满幅奶白的方图（iOS 自己切圆角），
+     网页上得自己圆一下，否则会在页底露出一个颜色略深的方块。
+     这里复用 og-image.png——它就是同一张 App 图标，而且 <link rel="icon">
+     已经让浏览器下过一次了，footer 再引一次不额外花流量。 */
+  .sign img { width: 30px; height: 30px; border-radius: 7px; display: block; }
 
   /* ---------- 窄屏：一列 ---------- */
   @media (max-width: 860px) {
@@ -237,8 +243,10 @@
 
 <div class="wrap">
   <footer>
-    <img src="wordmark.png" alt="fafa" width="383" height="197">
-    <span>该花花，就发发。</span>
+    <span class="sign">
+      <img src="og-image.png" alt="fafa" width="1024" height="1024">
+      该花花，就发发。
+    </span>
   </footer>
 </div>
 
