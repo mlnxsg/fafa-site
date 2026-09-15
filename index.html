@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>fafa</title>
-<meta name="description" content="输入「奶茶15」就记好一笔，该花花就发发。不联网，没有账号，账只在自己手机里。">
+<meta name="description" content="一句话，就记好一笔。输入「奶茶15」，金额和分类自动填好。无需注册，离线可用，账目保存在本机。">
 
-<!-- 分享预览卡片。App 里「分享给朋友」发的就是这个网址，iOS 分享面板顶上那条、
-     微信的链接卡片都靠下面这几个标签渲染；一个都不填的话，左边只会是个「字」占位图。
+<!-- 分享预览卡片。有人把这个网址发到微信、备忘录、iMessage 时靠下面这几个标签渲染，
+     不填就只有一行光秃秃的域名。
      ⚠️ og:image 必须写绝对地址，相对路径抓不到。改了这一段记得 push，
      线上那份才是别人看到的。 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="fafa">
 <meta property="og:title" content="fafa · 一句话记账">
-<meta property="og:description" content="输入「奶茶15」就记好一笔，该花花就发发。">
+<meta property="og:description" content="输入「奶茶15」，金额和分类自动填好。该花花就发发。">
 <meta property="og:url" content="https://mlnxsg.github.io/fafa-site/">
 <meta property="og:image" content="https://mlnxsg.github.io/fafa-site/og-image.png">
 <meta property="og:image:width" content="1024">
@@ -46,8 +46,11 @@
     -webkit-font-smoothing: antialiased;
   }
   main { max-width: 420px; text-align: center; }
-  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: .5px; }
-  .tag { margin: 0 0 28px; color: var(--ink-soft); font-size: 17px; }
+  /* 字标是图不是字（跟 App 主页左上角同一张 wordmark.png）。
+     标签上写死 width/height，浏览器一开始就留好位置，图加载完不会把下面的字顶一下。 */
+  h1 { margin: 0 0 10px; line-height: 0; }
+  h1 img { width: 148px; height: auto; max-width: 100%; }
+  .tag { margin: 0 0 24px; color: var(--ink-soft); font-size: 17px; }
   .lede { margin: 0 0 32px; color: var(--muted); font-size: 15px; }
   nav { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
   a { color: var(--brand); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
@@ -57,17 +60,22 @@
 </head>
 <body>
 <main>
-  <h1>fafa</h1>
-  <p class="tag">打一行字，就记完一笔。</p>
+  <h1><img src="wordmark.png" alt="fafa" width="383" height="197"></h1>
+  <p class="tag">一句话，就记好一笔。</p>
   <p class="lede">
-    一个尽可能简单的记账 App。不联网，没有账号，
-    你的账只在自己的手机里。
+    输入「奶茶15」，金额和分类自动填好。<br>
+    轻松记，零压力，该花花就发发。<br>
+    无需注册，离线可用，账目保存在本机。
   </p>
   <nav>
     <a href="privacy.html">隐私说明</a>
     <a href="mailto:usefafa@proton.me">联系作者</a>
   </nav>
-  <footer>iOS</footer>
+  <!-- ⚠️ 这一行带时效，**上架当天必须改**：用户从 App Store 产品页的「App 支持」
+       点进来，看到"即将登陆"会以为走错了地方。上架后换成
+       <a href="https://apps.apple.com/app/id6811014619">在 App Store 下载</a>。
+       ⚠️ 审核期间不能提前换成那个链接——产品页还没公开，审核员点了是 404。 -->
+  <footer>即将登陆 App Store</footer>
 </main>
 </body>
 </html>
