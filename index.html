@@ -32,8 +32,9 @@
     --ink-soft: #4E443D;      /* 正文 */
     --muted: #8B7E75;         /* 次要文字、图标 */
     --brand: #B08268;         /* 陶土棕，跟 App 同一支 */
-    --brand-deep: #9A6E56;    /* 比 brand 深一档，现在没人用，留着备用 */
-    --sage: #8A9C87;          /* 鼠尾草绿，从 App 图标里取的那一支（棕的那半是 #B0775B） */
+    --brand-deep: #9A6E56;    /* 按钮/强调，比 brand 深一档 */
+    /* 按钮试过 App 图标里那支鼠尾草绿 #8A9C87，不好看，换回陶土棕了。
+       （那支绿配白字对比度只有 2.9:1，也不过 WCAG AA。） */
     --line: #E3DBD2;
   }
   * { box-sizing: border-box; }
@@ -105,9 +106,9 @@
   .cta {
     display: inline-block; cursor: default; user-select: none;
     padding: 14px 30px; border-radius: 999px;
-    background: var(--sage); color: #fff;
+    background: var(--brand-deep); color: #fff;
     font-size: 15px; letter-spacing: .3px;
-    box-shadow: 0 6px 18px rgba(138, 156, 135, .35);
+    box-shadow: 0 6px 18px rgba(154, 110, 86, .22);
   }
 
   .feats {
