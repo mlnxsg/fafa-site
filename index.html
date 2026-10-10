@@ -104,16 +104,18 @@
 
   .lede { margin: 0 0 32px; font-size: 16px; color: var(--ink-soft); }
 
-  /* ⚠️ 这是一颗**不可点**的状态胶囊，不是按钮：现在没有任何地方可以跳。
-     上架当天换成 <a class="cta" href="https://apps.apple.com/app/id6811014619">在 App Store 下载</a>
-     并把 cursor/hover 打开。审核期间不能提前换——产品页没公开，点了是 404。 */
+  /* 下载按钮（2026-10-10 上架后由「即将登陆 App Store」状态胶囊换来）。
+     ⚠️ 链接要带 /cn/：不带地区的 apps.apple.com/app/id… 在 iPhone 上没问题，
+     但电脑浏览器从国内打开会被跳到 App Store 的 Today 首页，看不到 fafa。 */
   .cta {
-    display: inline-block; cursor: default; user-select: none;
+    display: inline-block; cursor: pointer; user-select: none; text-decoration: none;
+    transition: background .15s ease;
     padding: 14px 30px; border-radius: 999px;
     background: var(--brand-deep); color: #fff;
     font-size: 15px; letter-spacing: .3px;
     box-shadow: 0 6px 18px rgba(154, 110, 86, .22);
   }
+  .cta:hover { background: var(--brand); }
 
   .feats {
     display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
@@ -207,7 +209,7 @@
         输入「奶茶15」，金额和分类自动填好。<br>
         轻松记，零压力，该花花就发发。
       </p>
-      <span class="cta">即将登陆 App Store</span>
+      <a class="cta" href="https://apps.apple.com/cn/app/id6811014619">在 App Store 下载</a>
 
       <ul class="feats">
         <li>

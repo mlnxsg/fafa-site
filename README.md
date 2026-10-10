@@ -10,7 +10,7 @@ GitHub Pages 免费版只能给公开仓库用，而 App Store 强制要求一�
 
 | 文件 | 用途 |
 |---|---|
-| `index.html` | 落地页。上架后可以把 App Store 链接加上 |
+| `index.html` | 落地页。下载按钮链到 App Store（`/cn/` 地区链接，原因见 `.cta` 上方注释） |
 | `privacy.html` | 隐私说明。**这个地址要填进 App Store Connect**，别改文件名 |
 
 两个页面都是单文件、无依赖、无构建步骤，直接改 HTML 就行。
