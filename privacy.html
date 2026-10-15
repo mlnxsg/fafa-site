@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>fafa 隐私说明</title>
+<title>fafa 隐私政策</title>
 <style>
   :root {
     --ground: #F3F0EB;
@@ -27,6 +27,7 @@
   main { max-width: 640px; margin: 0 auto; }
   header { margin-bottom: 36px; }
   h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: .3px; }
+  .date { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
   .intro { margin: 0; color: var(--ink-soft); font-size: 17px; }
   .card {
     background: var(--surface);
@@ -40,63 +41,64 @@
   p { margin: 0; color: var(--ink-soft); }
   p + p { margin-top: 10px; }
   a { color: var(--brand); }
-  footer {
-    margin-top: 28px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
-  }
-  footer p { margin: 0; color: inherit; }
 </style>
 </head>
 <body>
 <main>
   <header>
-    <h1>fafa 隐私说明</h1>
-    <p class="intro">fafa 不联网，你的账只在你的手机里。</p>
+    <h1>隐私政策</h1>
+    <p class="date">更新日期：2026 年 10 月 15 日</p>
+    <p class="intro">fafa 以本地记账为主。你的账保存在手机里，也可以选择备份到自己的 iCloud。</p>
   </header>
 
   <div class="card">
     <section>
       <h2>不收集个人信息</h2>
-      <p>fafa 没有服务器，也没有账号体系，不会收集姓名、手机号、位置、通讯录等个人信息，更没有统计和广告。</p>
+      <p>fafa 没有自建账号体系，不收集姓名、手机号、位置、通讯录等个人信息，也没有广告、第三方统计或追踪组件。</p>
+      <p>开发者不会收集或读取你的记账数据。</p>
     </section>
 
     <section>
-      <h2>数据只在你的手机里</h2>
-      <p>账本、记录、分类和预算都保存在本机，其他 App 无法读取。fafa 没有云端副本，卸载后这些数据会一并删除，只能用你自己导出的备份文件恢复。</p>
+      <h2>本地存储与备份</h2>
+      <p>账本、记录、分类和预算等数据保存在你的设备上。开启 iCloud 自动备份后，备份数据也会保存到你自己的 iCloud。</p>
+      <p>fafa 没有用于存储你记账数据的开发者服务器。开发者无法读取你的本地账本或 iCloud 备份。</p>
+    </section>
+
+    <section>
+      <h2>iCloud 自动备份</h2>
+      <p>你可以在应用设置中开启或关闭 iCloud 自动备份。开启后，fafa 会将记账数据自动备份到你的 iCloud，用于之后恢复账本。</p>
+      <p>使用此功能需要登录 Apple 账户、启用相关 iCloud 服务，并有足够的 iCloud 存储空间。备份能否完成取决于网络连接、可用空间及系统运行条件。</p>
+      <p>iCloud 由 Apple 提供，相关数据处理适用 Apple 的隐私政策及 iCloud 服务条款。</p>
     </section>
 
     <section>
       <h2>数据由你掌控</h2>
-      <p>fafa 不会自动上传你的数据。需要时，你可以随时导出 Markdown 报表或 JSON 备份，把数据带走。</p>
+      <p>你可以随时导出 Markdown 报表或 JSON 备份，保存或带走自己的数据，也可以自行选择是否开启 iCloud 自动备份。</p>
+      <p>关闭自动备份后，fafa 将不再自动创建新的 iCloud 备份。</p>
+      <p>卸载应用会删除本地数据。卸载或更换设备前，请先确认已有可用的备份。恢复数据需要使用你导出的 JSON 备份，或应用中可用的 iCloud 备份。</p>
     </section>
 
     <section>
-      <h2>不共享给第三方</h2>
-      <p>因为不收集任何数据，也就没有任何数据被共享、出售或转移给第三方。fafa 不含第三方统计、广告或追踪组件。</p>
+      <h2>不出售数据，不用于广告追踪</h2>
+      <p>fafa 不会出售你的记账数据，也不会将其用于广告、用户画像或追踪。</p>
+      <p>开启 iCloud 自动备份时，备份数据会通过网络传输并存储在 Apple 提供的 iCloud 服务中，用于备份与恢复，不会发送到开发者的服务器。</p>
     </section>
 
     <section>
       <h2>儿童隐私</h2>
-      <p>fafa 不收集任何用户信息，也不针对儿童收集数据。</p>
+      <p>fafa 不主动收集任何用户的个人信息，也不针对儿童收集数据。</p>
     </section>
 
     <section>
-      <h2>关于云端同步</h2>
-      <p>如果未来加入云端同步，会由你主动开启，并在这里更新说明。</p>
+      <h2>政策更新</h2>
+      <p>如果未来的功能调整涉及数据存储或处理方式的变化，我们会更新本政策，并在需要时于应用内作出说明。</p>
     </section>
 
     <section>
       <h2>联系方式</h2>
-      <p>对隐私有任何疑问，可以邮件联系：<a href="mailto:usefafa@proton.me">usefafa@proton.me</a></p>
+      <p>如果你对本政策或数据处理方式有任何疑问，可以通过邮件联系：<a href="mailto:usefafa@proton.me">usefafa@proton.me</a></p>
     </section>
   </div>
-
-  <footer>
-    <p>生效日期：2026 年 9 月 11 日</p>
-    <p>本说明如有更新，会直接在本页修改。</p>
-  </footer>
 </main>
 </body>
 </html>
